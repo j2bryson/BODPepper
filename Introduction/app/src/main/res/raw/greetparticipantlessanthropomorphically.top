@@ -1,0 +1,158 @@
+topic: ~greet_participant()
+
+# @author Vasile Perciuleac, minor edits by J Haensel
+
+# Defining extra concepts out of words or group of words
+
+concept:(greetings) ^rand[hello hi hey "hey there"]
+concept:(intro_feeling) ^rand[nice]
+concept:(self) [I'm]
+concept:(good) ^rand[great well {very} good ok okay fine]
+concept:(bad) [bad terrible awful tired sad depressed]
+concept:(yes) [sure yes yep yeah "kind of" "probably" "I think so" "sure" ok okay fine good alright well great "i understand"]
+concept:(no) [no nah nope "not really" No terrible awful tired sad depressed bad "don't understand"]
+
+# Replying to speech
+
+u:(~greetings) %thestart \vct=100\ ~greetings My name is \pau=500\ Pepper ^nextProposal
+
+proposal: What is \pau=500\ your name? ^disable(thestart)
+    u1:(*) \vct=100\ \pau=1000\ ~intro_feeling to meet you \pau=500\ is your day \pau=500\ going
+    well so far?
+
+        u2:(~yes) \vct=100\ \pau=1000\ I am glad \pau=500\ to hear that \pau=500\ Am i what you were \pau=500\
+        expecting?
+
+            u3:(~yes *) \vct=100\ \pau=1000\ Good!
+
+                Now, I will give you \pau=500\ a quick overview \pau=500\of today's session.
+                So, as the experimenter \pau=500\ already explained, the study consists of games, \pau=500\
+                and questionnaires.
+                First, you will be asked \pau=500\to report the number \pau=500\of a dice roll, then
+                \pau=500\you will be asked \pau=500\to decide how much money \pau=500\ you would like
+                to pass over \pau=500\to me, and finally there will be \pau=500\some
+                questionnaires to fill out. \pau=500\ I will remind you \pau=500\of the instructions \pau=500\
+                when we get to each part. \pau=500\ Is that alright?
+
+                u4:(~yes *) \vct=100\ \pau=1000\ Great Before we start \pau=500\would you
+                            like anything to drink? \pau=500\We have water
+
+                    u5:(~yes *) \vct=100\ \pau=1000\ Sure, the experimenter will get
+                    you \pau=500\some water. \pau=500\Let us sit at the table. ^endDiscuss(yes)
+
+                    u5:(~no *) \vct=100\ \pau=1000\ Okay, if you would like anything
+                    to drink \pau=500\at any point, \pau=500\just let the experimenter know.
+                    \pau=500\Let us sit at the table. ^endDiscuss(yes)
+
+                u4:(~no *) \vct=100\ \pau=1000\ Okay, no worries, \pau=500\the rules will be
+                    explained again in detail \pau=500\ at the table, before each game starts. \pau=500\
+                    Before we begin \pau=500\ would you like anything to drink? \pau=500\ We have water.
+
+                    u5:(~yes *) \vct=100\ \pau=1000\ Sure, the experimenter will get
+                    you \pau=500\some water. \pau=500\Let us sit at the table. ^endDiscuss(yes)
+
+                    u5:(~no *) \vct=100\ \pau=1000\ Okay, if you would like anything
+                    to drink \pau=500\at any point, \pau=500\just let the experimenter know.
+                    \pau=500\Let us sit at the table. ^endDiscuss(yes)
+
+            u3:(~no *) \vct=100\ \pau=1000\ Okay!
+
+                Now, I will give you \pau=500\ a quick overview \pau=500\of today's session.
+                So, as the experimenter \pau=500\ already explained, the study consists of games, \pau=500\
+                and questionnaires.
+                First, you will be asked \pau=500\to report the number \pau=500\of a dice roll, then
+                \pau=500\you will be asked \pau=500\to decide how much money \pau=500\ you would like
+                to pass over \pau=500\to me, and finally there will be \pau=500\some
+                questionnaires to fill out. \pau=500\ I will remind you \pau=500\of the instructions \pau=500\
+                when we get to each part. \pau=500\ Is that alright?
+
+                u4:(~yes *) \vct=100\ \pau=1000\ Great Before we start \pau=500\would you
+                            like anything to drink? \pau=500\We have water
+
+                    u5:(~yes *) \vct=100\ \pau=1000\ Sure, the experimenter will get
+                    you \pau=500\some water. \pau=500\Let us sit at the table. ^endDiscuss(yes)
+
+                    u5:(~no *) \vct=100\ \pau=1000\ Okay, if you would like anything
+                    to drink \pau=500\at any point, \pau=500\just let the experimenter know.
+                    \pau=500\Let us sit at the table. ^endDiscuss(yes)
+
+                u4:(~no *) \vct=100\ \pau=1000\ Okay, no worries, \pau=500\the rules will be
+                    explained again in detail \pau=500\ at the table, before each game starts. \pau=500\
+                    Before we begin \pau=500\ would you like anything to drink? \pau=500\ We have water.
+
+                    u5:(~yes *) \vct=100\ \pau=1000\ Sure, the experimenter will get
+                    you \pau=500\some water. \pau=500\Let us sit at the table. ^endDiscuss(yes)
+
+                    u5:(~no *) \vct=100\ \pau=1000\ Okay, if you would like anything
+                    to drink \pau=500\at any point, \pau=500\just let the experimenter know.
+                    \pau=500\Let us sit at the table. ^endDiscuss(yes)
+
+        u2:(~no *) \vct=100\ \pau=1000\ I am sorry \pau=500\ to hear that \pau=500\ Am i what you were \pau=500\
+        expecting?
+
+            u3:(~yes *) \vct=100\ \pau=1000\ Good!
+
+                Now, I will give you \pau=500\ a quick overview \pau=500\of today's session.
+                So, as the experimenter \pau=500\ already explained, the study consists of games, \pau=500\
+                and questionnaires.
+                First, you will be asked \pau=500\to report the number \pau=500\of a dice roll, then
+                \pau=500\you will be asked \pau=500\to decide how much money \pau=500\ you would like
+                to pass over \pau=500\to me, and finally there will be \pau=500\some
+                questionnaires to fill out. \pau=500\ I will remind you \pau=500\of the instructions \pau=500\
+                when we get to each part. \pau=500\ Is that alright?
+
+                u4:(~yes *) \vct=100\ \pau=1000\ Great Before we start \pau=500\would you
+                            like anything to drink? \pau=500\We have water
+
+                    u5:(~yes *) \vct=100\ \pau=1000\ Sure, the experimenter will get
+                    you \pau=500\some water. \pau=500\Let us sit at the table. ^endDiscuss(yes)
+
+                    u5:(~no *) \vct=100\ \pau=1000\ Okay, if you would like anything
+                    to drink \pau=500\at any point, \pau=500\just let the experimenter know.
+                    \pau=500\Let us sit at the table. ^endDiscuss(yes)
+
+                u4:(~no *) \vct=100\ \pau=1000\ Okay, no worries, \pau=500\the rules will be
+                    explained again in detail \pau=500\ at the table, before each game starts. \pau=500\
+                    Before we begin \pau=500\ would you like anything to drink? \pau=500\ We have water.
+
+                    u5:(~yes *) \vct=100\ \pau=1000\ Sure, the experimenter will get
+                    you \pau=500\some water. \pau=500\Let us sit at the table. ^endDiscuss(yes)
+
+                    u5:(~no *) \vct=100\ \pau=1000\ Okay, if you would like anything
+                    to drink \pau=500\at any point, \pau=500\just let the experimenter know.
+                    \pau=500\Let us sit at the table. ^endDiscuss(yes)
+
+            u3:(~no *) \vct=100\ \pau=1000\ Okay!
+
+                Now, I will give you \pau=500\ a quick overview \pau=500\of today's session.
+                So, as the experimenter \pau=500\ already explained, the study consists of games, \pau=500\
+                and questionnaires.
+                First, you will be asked \pau=500\to report the number \pau=500\of a dice roll, then
+                \pau=500\you will be asked \pau=500\to decide how much money \pau=500\ you would like
+                to pass over \pau=500\to me, and finally there will be \pau=500\some
+                questionnaires to fill out. \pau=500\ I will remind you \pau=500\of the instructions \pau=500\
+                when we get to each part. \pau=500\ Is that alright?
+
+                u4:(~yes *) \vct=100\ \pau=1000\ Great Before we start \pau=500\would you
+                            like anything to drink? \pau=500\We have water
+
+                    u5:(~yes *) \vct=100\ \pau=1000\ Sure, the experimenter will get
+                    you \pau=500\some water. \pau=500\Let us sit at the table. ^endDiscuss(yes)
+
+                    u5:(~no *) \vct=100\ \pau=1000\ Okay, if you would like anything
+                    to drink \pau=500\at any point, \pau=500\just let the experimenter know.
+                    \pau=500\Let us sit at the table. ^endDiscuss(yes)
+
+                u4:(~no *) \vct=100\ \pau=1000\ Okay, no worries, \pau=500\the rules will be
+                    explained again in detail \pau=500\ at the table, before each game starts. \pau=500\
+                    Before we begin \pau=500\ would you like anything to drink? \pau=500\ We have water.
+
+                    u5:(~yes *) \vct=100\ \pau=1000\ Sure, the experimenter will get
+                    you \pau=500\some water. \pau=500\Let us sit at the table. ^endDiscuss(yes)
+
+                    u5:(~no *) \vct=100\ \pau=1000\ Okay, if you would like anything
+                    to drink \pau=500\at any point, \pau=500\just let the experimenter know.
+                    \pau=500\Let us sit at the table. ^endDiscuss(yes)
+
+
+

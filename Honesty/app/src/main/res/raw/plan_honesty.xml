@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Plan>
+    <ActionPatterns>
+        <ActionPattern name="AP-Introduction">
+            <Actions>
+                <Action name="Introduction"></Action>
+            </Actions>
+        </ActionPattern>
+        <ActionPattern name="AP-Dice">
+            <Actions>
+                <Action name="Dice"></Action>
+            </Actions>
+        </ActionPattern>
+        <ActionPattern name="AP-Transition">
+            <Actions>
+                <Action name="Transition"></Action>
+            </Actions>
+        </ActionPattern>
+    </ActionPatterns>
+
+
+    <CompetenceElements>
+
+        <CompetenceElement name="CE-Introduce" triggers="AP-Introduction">
+        </CompetenceElement>
+
+        <CompetenceElement name="CE-DiceGame" triggers="AP-Dice">
+        </CompetenceElement>
+
+        <CompetenceElement name="CE-TransitionSequence" triggers="AP-Transition">
+        </CompetenceElement>
+
+    </CompetenceElements>
+
+    <Competences>
+
+        <Competence name="C-Introduce">
+            <CompetenceElements>
+                <CompetenceElement name="CE-Introduce"></CompetenceElement>
+            </CompetenceElements>
+        </Competence>
+
+        <Competence name="C-DiceGame">
+            <CompetenceElements>
+                <CompetenceElement name="CE-DiceGame"></CompetenceElement>
+            </CompetenceElements>
+        </Competence>
+
+        <Competence name="C-TransitionSequence">
+            <CompetenceElements>
+                <CompetenceElement name="CE-TransitionSequence"></CompetenceElement>
+            </CompetenceElements>
+        </Competence>
+
+    </Competences>
+
+
+    <DriveElements>
+
+        <DriveElement name="DE-Introduce" triggers="C-Introduce" checkTime="5">
+            <Senses>
+                <Sense name="Rules" value="0" comparator="bool"></Sense>
+            </Senses>
+        </DriveElement>
+
+        <DriveElement name="DE-DiceGame" triggers="C-DiceGame" checkTime="3">
+            <Senses>
+                <Sense name="Rules" value="1" comparator="bool"></Sense>
+                <Sense name="End" value="0" comparator="bool"></Sense>
+            </Senses>
+        </DriveElement>
+
+        <DriveElement name="DE-TransitionSequence" triggers="C-TransitionSequence" checkTime="3">
+            <Senses>
+                <Sense name="End" value="1" comparator="bool"></Sense>
+            </Senses>
+        </DriveElement>
+
+    </DriveElements>
+
+
+    <Drives>
+        <Drive name="D-Introduction" priority="1">
+            <DriveElements>
+                <DriveElement name="DE-Introduce"></DriveElement>
+            </DriveElements>
+        </Drive>
+
+        <Drive name="D-DiceGame" priority="2">
+            <DriveElements>
+                <DriveElement name="DE-DiceGame"></DriveElement>
+            </DriveElements>
+        </Drive>
+
+        <Drive name="D-TransitionSequence" priority="3">
+            <DriveElements>
+                <DriveElement name="DE-TransitionSequence"></DriveElement>
+            </DriveElements>
+        </Drive>
+
+
+    </Drives>
+</Plan>

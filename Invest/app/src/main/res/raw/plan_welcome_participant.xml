@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Plan>
+    <ActionPatterns>
+        <ActionPattern name="AP-IntroduceToHuman">
+            <Actions>
+                <Action name="IntroduceToHuman"></Action>
+            </Actions>
+        </ActionPattern>
+        <ActionPattern name="AP-ApproachTable">
+            <Actions>
+                <Action name="ApproachTable"></Action>
+            </Actions>
+        </ActionPattern>
+    </ActionPatterns>
+
+    <CompetenceElements>
+        <CompetenceElement name="CE-BatteryPrompt" triggers="AP-BatteryPrompt">
+            <Senses>
+                <Sense name="Talking" value="0" comparator="bool"></Sense>
+                <Sense name="Listening" value="0" comparator="bool"></Sense>
+            </Senses>
+        </CompetenceElement>
+        <CompetenceElement name="CE-WelcomeParticipant" triggers="AP-IntroduceToHuman"></CompetenceElement>
+        <CompetenceElement name="CE-ApproachTable" triggers="AP-ApproachTable">
+        </CompetenceElement>
+    </CompetenceElements>
+
+    <Competences>
+        <Competence name="C-BatteryPrompt">
+            <CompetenceElements>
+                <CompetenceElement name="CE-BatteryPrompt"></CompetenceElement>
+            </CompetenceElements>
+        </Competence>
+
+        <Competence name="C-WelcomeParticipant">
+            <CompetenceElements>
+                <CompetenceElement name="CE-WelcomeParticipant"></CompetenceElement>
+            </CompetenceElements>
+        </Competence>
+        <Competence name="C-ApproachTable">
+            <CompetenceElements>
+                <CompetenceElement name="CE-ApproachTable"></CompetenceElement>
+            </CompetenceElements>
+        </Competence>
+    </Competences>
+
+    <DriveElements>
+        <DriveElement name="DE-BatteryPrompt" triggers="C-BatteryPrompt" checkTime="60">
+            <Senses>
+                <Sense name="BatteryLow" value="1" comparator="bool"></Sense>
+            </Senses>
+        </DriveElement>
+
+        <DriveElement name="DE-WelcomeParticipant" triggers="C-WelcomeParticipant" checkTime="5">
+            <Senses>
+                <Sense name="HumanPresent" value="1" comparator="bool"></Sense>
+            </Senses>
+        </DriveElement>
+        <DriveElement name="DE-ApproachTable" triggers="C-ApproachTable" checkTime="5"></DriveElement>
+    </DriveElements>
+
+    <Drives>
+        <Drive name="D-Battery" priority="1">
+            <DriveElements>
+                <DriveElement name="DE-BatteryPrompt"></DriveElement>
+            </DriveElements>
+        </Drive>
+        <Drive name="D-WelcomeParticipant" priority="2">
+            <DriveElements>
+                <DriveElement name="DE-WelcomeParticipant"></DriveElement>
+            </DriveElements>
+        </Drive>
+        <Drive name="D-ApproachTable" priority="3">
+            <Senses>
+                <Sense name="OkToStart" value="1" comparator="bool"></Sense>
+            </Senses>
+            <DriveElements>
+                <DriveElement name="DE-ApproachTable"></DriveElement>
+            </DriveElements>
+        </Drive>
+    </Drives>
+</Plan>

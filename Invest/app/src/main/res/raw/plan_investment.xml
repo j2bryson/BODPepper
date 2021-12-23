@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Plan>
+    <ActionPatterns>
+        <ActionPattern name="AP-BatteryPrompt">
+            <Actions>
+                <Action name="PromptForBatteryCharge"></Action>
+            </Actions>
+        </ActionPattern>
+        <ActionPattern name="AP-Understood">
+            <Actions>
+                <Action name="AskAboutRules"></Action>
+            </Actions>
+        </ActionPattern>
+        <ActionPattern name="AP-Supervisor">
+            <Actions>
+                <Action name="LookAtExperimenter"></Action>
+            </Actions>
+        </ActionPattern>
+        <ActionPattern name="AP-PlayGame">
+            <Actions>
+                <Action name="PlayGame"></Action>
+            </Actions>
+        </ActionPattern>
+        <ActionPattern name="AP-Goodbye">
+            <Actions>
+                <Action name="Goodbye"></Action>
+            </Actions>
+        </ActionPattern>
+    </ActionPatterns>
+
+    <CompetenceElements>
+        <CompetenceElement name="CE-BatteryPrompt" triggers="AP-BatteryPrompt">
+            <Senses>
+                <Sense name="Talking" value="0" comparator="bool"></Sense>
+                <Sense name="Listening" value="0" comparator="bool"></Sense>
+            </Senses>
+        </CompetenceElement>
+        <CompetenceElement name="CE-Understood" triggers="AP-Understood">
+            <Senses>
+                <Sense name="Talking" value="0" comparator="bool"></Sense>
+                <Sense name="Listening" value="0" comparator="bool"></Sense>
+            </Senses>
+        </CompetenceElement>
+        <CompetenceElement name="CE-Supervisor" triggers="AP-Supervisor">
+        </CompetenceElement>
+        <CompetenceElement name="CE-PlayGame" triggers="AP-PlayGame">
+        </CompetenceElement>
+        <CompetenceElement name="CE-Goodbye" triggers="AP-Goodbye">
+        </CompetenceElement>
+    </CompetenceElements>
+
+    <Competences>
+        <Competence name="C-BatteryPrompt">
+            <CompetenceElements>
+                <CompetenceElement name="CE-BatteryPrompt"></CompetenceElement>
+            </CompetenceElements>
+        </Competence>
+        <Competence name="C-Understood">
+            <CompetenceElements>
+                <CompetenceElement name="CE-Understood"></CompetenceElement>
+            </CompetenceElements>
+        </Competence>
+        <Competence name="C-Supervisor">
+            <CompetenceElements>
+                <CompetenceElement name="CE-Supervisor"></CompetenceElement>
+            </CompetenceElements>
+        </Competence>
+        <Competence name="C-PlayGame">
+            <CompetenceElements>
+                <CompetenceElement name="CE-PlayGame"></CompetenceElement>
+            </CompetenceElements>
+        </Competence>
+        <Competence name="C-Goodbye">
+            <CompetenceElements>
+                <CompetenceElement name="CE-Goodbye"></CompetenceElement>
+            </CompetenceElements>
+        </Competence>
+    </Competences>
+
+    <DriveElements>
+        <DriveElement name="DE-BatteryPrompt" triggers="C-BatteryPrompt" checkTime="60">
+            <Senses>
+                <Sense name="BatteryLow" value="1" comparator="bool"></Sense>
+            </Senses>
+        </DriveElement>
+        <DriveElement name="DE-Understood" triggers="C-Understood" checkTime="1">
+            <Senses>
+                <Sense name="Explained" value="0" comparator="bool"></Sense>
+                <Sense name="Played" value="0" comparator="bool"></Sense>
+            </Senses>
+        </DriveElement>
+        <DriveElement name="DE-PlayGame" triggers="C-PlayGame" checkTime="3">
+            <Senses>
+                <Sense name="Understood" value="1" comparator="bool"></Sense>
+                <Sense name="Played" value="0" comparator="bool"></Sense>
+            </Senses>
+        </DriveElement>
+        <DriveElement name="DE-Supervisor" triggers="C-Supervisor" checkTime="3">
+            <Senses>
+                <Sense name="Understood" value="0" comparator="bool"></Sense>
+                <Sense name="Explained" value="1" comparator="bool"></Sense>
+            </Senses>
+        </DriveElement>
+        <DriveElement name="DE-Goodbye" triggers="C-Goodbye" checkTime="3">
+            <Senses>
+                <Sense name="Understood" value="1" comparator="bool"></Sense>
+                <Sense name="Played" value="1" comparator="bool"></Sense>
+                <Sense name="Goodbye" value="0" comparator="bool"></Sense>
+            </Senses>
+        </DriveElement>
+    </DriveElements>
+
+    <Drives>
+        <Drive name="D-Battery" priority="1">
+            <DriveElements>
+                <DriveElement name="DE-BatteryPrompt"></DriveElement>
+            </DriveElements>
+        </Drive>
+        <Drive name="D-Understood" priority="2">
+            <DriveElements>
+                <DriveElement name="DE-Understood"></DriveElement>
+            </DriveElements>
+        </Drive>
+        <Drive name="D-Supervisor" priority="3">
+            <DriveElements>
+                <DriveElement name="DE-Supervisor"></DriveElement>
+            </DriveElements>
+        </Drive>
+        <Drive name="D-PlayGame" priority="3">
+            <DriveElements>
+                <DriveElement name="DE-PlayGame"></DriveElement>
+            </DriveElements>
+        </Drive>
+        <Drive name="D-Goodbye" priority="4">
+            <DriveElements>
+                <DriveElement name="DE-Goodbye"></DriveElement>
+            </DriveElements>
+        </Drive>
+    </Drives>
+</Plan>

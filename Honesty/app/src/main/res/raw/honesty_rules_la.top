@@ -1,0 +1,20 @@
+topic: ~honesty_rules()
+# Defining extra concepts out of words or group of words
+#concept:(hello) [hello hi hey "good morning" greetings]
+
+# Replying to speech
+#u:(~hello) ~hello
+
+concept: (y) ["i understand" "it's clear" sure yes yup correct fine yep yeah "kind of" "probably" "I think so"]
+concept: (n) ["don't understand" no nah nope "not really"]
+
+u:(~y)
+\vct=100\ Okay. Once the experimenter \pau=500\ has left the room \pau=500\ you can roll the dice.
+$rules=true ^endDiscuss(yes)
+
+u:(~n)
+\vct=100\ In that case, the experimenter will explain more.
+
+    u1:(Please continue)
+    \vct=100\ Okay. Once the experimenter \pau=500\ has left the room \pau=500\ you can roll the dice.
+    $rules=true ^endDiscuss(yes)

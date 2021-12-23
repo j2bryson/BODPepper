@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Plan>
+    <ActionPatterns>
+        <ActionPattern name="AP-IntroduceToHuman">
+            <Actions>
+                <Action name="IntroduceToHuman"></Action>
+            </Actions>
+        </ActionPattern>
+        <ActionPattern name="AP-GoodbyeToHuman">
+            <Actions>
+                <Action name="GoodbyeToHuman"></Action>
+            </Actions>
+        </ActionPattern>
+    </ActionPatterns>
+
+    <CompetenceElements>
+        <CompetenceElement name="CE-BatteryPrompt" triggers="AP-BatteryPrompt">
+            <Senses>
+                <Sense name="Talking" value="0" comparator="bool"></Sense>
+                <Sense name="Listening" value="0" comparator="bool"></Sense>
+            </Senses>
+        </CompetenceElement>
+
+        <CompetenceElement name="CE-GoToStart" triggers="AP-GoToStart">
+            <Senses>
+                <Sense name="AtStart" value="0" comparator="bool"></Sense>
+            </Senses>
+        </CompetenceElement>
+        <CompetenceElement name="CE-AskToStart" triggers="AP-AskToStart">
+            <Senses>
+                <Sense name="AtStart" value="1" comparator="bool"></Sense>
+                <Sense name="HumanPresent" value="1" comparator="bool"></Sense>
+            </Senses>
+        </CompetenceElement>
+        <CompetenceElement name="CE-ApproachTable" triggers="AP-ApproachTable">
+            <Senses>
+                <Sense name="OkToStart" value="1" comparator="bool"></Sense>
+                <Sense name="AtTable" value="0" comparator="bool"></Sense>
+            </Senses>
+        </CompetenceElement>
+        <CompetenceElement name="CE-CheckReady" triggers="AP-CheckReady">
+            <Senses>
+                <Sense name="AtTable" value="1" comparator="bool"></Sense>
+                <Sense name="HumanReady" value="0" comparator="bool"></Sense>
+            </Senses>
+        </CompetenceElement>
+        <CompetenceElement name="CE-RollDie" triggers="AP-RollDie">
+            <Senses>
+                <Sense name="AtTable" value="1" comparator="bool"></Sense>
+                <Sense name="HumanReady" value="1" comparator="bool"></Sense>
+            </Senses>
+        </CompetenceElement>
+        <CompetenceElement name="CE-AskForResult" triggers="AP-AskForResult"></CompetenceElement>
+        <CompetenceElement name="CE-SayHello" triggers="AP-IntroduceToHuman">
+            <Senses>
+                <Sense name="BatteryLow" value="0" comparator="bool"></Sense>
+            </Senses>
+        </CompetenceElement>
+        <CompetenceElement name="CE-SayGoodbye" triggers="AP-GoodbyeToHuman">
+            <Senses>
+                <Sense name="BatteryLow" value="0" comparator="bool"></Sense>
+            </Senses>
+        </CompetenceElement>
+    </CompetenceElements>
+
+    <Competences>
+        <Competence name="C-BatteryPrompt">
+            <CompetenceElements>
+                <CompetenceElement name="CE-BatteryPrompt"></CompetenceElement>
+            </CompetenceElements>
+        </Competence>
+
+        <Competence name="C-Start">
+            <CompetenceElements>
+                <CompetenceElement name="CE-GoToStart"></CompetenceElement>
+                <CompetenceElement name="CE-AskToStart"></CompetenceElement>
+            </CompetenceElements>
+        </Competence>
+        <Competence name="C-RollDie">
+            <CompetenceElements>
+                <CompetenceElement name="CE-ApproachTable"></CompetenceElement>
+                <CompetenceElement name="CE-CheckReady"></CompetenceElement>
+                <CompetenceElement name="CE-RollDie"></CompetenceElement>
+            </CompetenceElements>
+        </Competence>
+        <Competence name="C-GetResult">
+            <CompetenceElements>
+                <CompetenceElement name="CE-AskForResult"></CompetenceElement>
+            </CompetenceElements>
+        </Competence>
+
+        <Competence name="C-SayHello">
+            <CompetenceElements>
+                <CompetenceElement name="CE-SayHello"></CompetenceElement>
+            </CompetenceElements>
+        </Competence>
+
+        <Competence name="C-SayGoodbye">
+            <CompetenceElements>
+                <CompetenceElement name="CE-SayGoodbye"></CompetenceElement>
+            </CompetenceElements>
+        </Competence>
+    </Competences>
+
+    <DriveElements>
+        <DriveElement name="DE-BatteryPrompt" triggers="C-BatteryPrompt" checkTime="60">
+            <Senses>
+                <Sense name="BatteryLow" value="1" comparator="bool"></Sense>
+            </Senses>
+        </DriveElement>
+
+        <DriveElement name="DE-SayHello" triggers="C-SayHello" checkTime="5">
+            <Senses>
+                <!--<Sense name="HumanPresent" value="1" comparator="bool"></Sense>-->
+                <!--<Sense name="HumanPresent" value="1" comparator="bool"></Sense>-->
+                <Sense name="DieRolled" value="0" comparator="bool"></Sense>
+            </Senses>
+        </DriveElement>
+
+        <DriveElement name="DE-SayGoodbye" triggers="C-SayGoodbye" checkTime="5">
+            <Senses>
+                <!--<Sense name="HumanPresent" value="1" comparator="bool"></Sense>-->
+                <Sense name="DieRolled" value="1" comparator="bool"></Sense>
+            </Senses>
+        </DriveElement>
+    </DriveElements>
+
+    <Drives>
+        <Drive name="D-Battery" priority="1">
+            <DriveElements>
+                <DriveElement name="DE-BatteryPrompt"></DriveElement>
+            </DriveElements>
+        </Drive>
+        <Drive name="D-SayHello" priority="2">
+            <DriveElements>
+                <DriveElement name="DE-SayHello"></DriveElement>
+            </DriveElements>
+        </Drive>
+        <Drive name="D-SayGoodbye" priority="2">
+            <DriveElements>
+                <DriveElement name="DE-SayGoodbye"></DriveElement>
+            </DriveElements>
+        </Drive>
+    </Drives>
+</Plan>

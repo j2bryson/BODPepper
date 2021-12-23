@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Game2B</string>
+    <string name="button_run_plan">Run Plan</string>
+    <string name="button_read_plan">Read Plan</string>
+    <string name="text_planner_log_waiting">Waiting for plan to run...</string>
+    <string name="label_current_drive">Current Drive:</string>
+    <string name="placeholder_current_drive">Waiting for plan to run...</string>
+    <string name="label_current_element">Current Element:</string>
+    <string name="placeholder_current_element">Waiting for plan to run...</string>
+    <string name="button_start">Start</string>
+    <string name="button_stop">Stop</string>
+    <string name="label_checked_senses">Checked Senses:</string>
+    <string name="placeholder_checked_senses">Waiting for plan to run...</string>
+    <string name="button_add_location">Add</string>
+    <string name="button_clear_locations">Clear</string>
+    <string name="saved_locations_count">Locations (%1$d):</string>
+    <string name="label_locations">Locations:</string>
+</resources>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--@ author Vasile Perciuleac-->
+<Plan>
+    <ActionPatterns>
+        <ActionPattern name="AP-BatteryPrompt">
+            <Actions>
+                <Action name="PromptForBatteryCharge"></Action>
+            </Actions>
+        </ActionPattern>
+
+        <ActionPattern name="AP-IntroduceToHuman">
+            <Actions>
+                <Action name="IntroduceToHuman"></Action>
+            </Actions>
+        </ActionPattern>
+
+        <ActionPattern name="AP-GoToTable">
+            <Actions>
+                <Action name="GoToTable"></Action>
+            </Actions>
+        </ActionPattern>
+    </ActionPatterns>
+
+    <CompetenceElements>
+        <CompetenceElement name="CE-BatteryPrompt" triggers="AP-BatteryPrompt">
+            <Senses>
+                <Sense name="Talking" value="0" comparator="bool"></Sense>
+                <Sense name="Listening" value="0" comparator="bool"></Sense>
+            </Senses>
+        </CompetenceElement>
+
+        <CompetenceElement name="CE-IntroduceToHuman" triggers="AP-IntroduceToHuman">
+            <Senses>
+                <Sense name="IntroductionHappened" value="0" comparator="bool"></Sense>
+            </Senses>
+        </CompetenceElement>
+
+        <CompetenceElement name="CE-GoToTable" triggers="AP-GoToTable">
+            <Senses>
+                <Sense name="IntroductionHappened" value="1" comparator="bool"></Sense>
+            </Senses>
+        </CompetenceElement>
+    </CompetenceElements>
+
+    <Competences>
+        <Competence name="C-BatteryPrompt">
+            <CompetenceElements>
+                <CompetenceElement name="CE-BatteryPrompt"></CompetenceElement>
+            </CompetenceElements>
+        </Competence>
+
+        <Competence name="C-IntroduceToHuman">
+            <CompetenceElements>
+                <CompetenceElement name="CE-IntroduceToHuman"></CompetenceElement>
+            </CompetenceElements>
+        </Competence>
+
+        <Competence name="C-GoToTable">
+            <CompetenceElements>
+                <CompetenceElement name="CE-GoToTable"></CompetenceElement>
+            </CompetenceElements>
+        </Competence>
+    </Competences>
+
+    <DriveElements>
+        <DriveElement name="DE-BatteryPrompt" triggers="C-BatteryPrompt" checkTime="60">
+            <Senses>
+                <Sense name="BatteryLow" value="1" comparator="bool"></Sense>
+            </Senses>
+        </DriveElement>
+
+        <DriveElement name="DE-IntroduceToHuman" triggers="C-IntroduceToHuman" checkTime="2">
+            <Senses>
+                <Sense name="IntroductionHappened" value="0" comparator="bool"></Sense>
+            </Senses>
+        </DriveElement>
+
+        <DriveElement name="DE-GoToTable" triggers="C-GoToTable" checkTime="3">
+            <Senses>
+                <Sense name="IntroductionHappened" value="1" comparator="bool"></Sense>
+                <Sense name="AtTable" value="0" comparator="bool"></Sense>
+            </Senses>
+        </DriveElement>
+    </DriveElements>
+    <Drives>
+        <Drive name="D-Battery" priority="3">
+            <DriveElements>
+                <DriveElement name="DE-BatteryPrompt"></DriveElement>
+            </DriveElements>
+        </Drive>
+        <Drive name="D-IntroduceToHuman" priority="1">
+            <DriveElements>
+                <DriveElement name="DE-IntroduceToHuman"></DriveElement>
+            </DriveElements>
+        </Drive>
+        <Drive name="D-GoToTable" priority="1">
+            <DriveElements>
+                <DriveElement name="DE-GoToTable"></DriveElement>
+            </DriveElements>
+        </Drive>
+    </Drives>
+</Plan>

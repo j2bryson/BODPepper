@@ -1,0 +1,55 @@
+topic: ~greet_participant()
+
+# Defining extra concepts out of words or group of words
+
+concept:(greetings) ^rand[hello hi hey "hey there"]
+concept:(self) [I'm "I am"]
+concept:(introduction) [~self "My name is"]
+concept:(intro_feeling) ^rand[nice glad happy]
+concept:(good) ^rand[great well {very} good]
+concept:(yes) [yes yep yeah]
+concept:(no) [no nah nope]
+
+# Replying to speech
+u:(~greetings) ~greetings What is your name?
+    u1:(~introduction _*) ~self ~intro_feeling to meet you! Is your day going well so far?
+    $name = $1
+        u2:(*) I am glad to hear that! Am I what you were expecting?
+
+            u3:(~yes *) Good, I would hate to disappoint you!
+
+            Now, I will give you a quick overview of how the experimental study is going to take place.
+            The study consists of you playing two games. In the first game, called honesty game, you will have to roll a dice.
+            In the second game, called investment game, you will have to invest a sum of money. The rules of both games will
+            be explained in detail at the table.
+
+            Is this clear?
+
+                u4:(~yes *) Great! Before we proceed, would you like anything to drink?
+
+                    u5:(~yes *) Very well, I will tell Jen to bring you some water. Now follow me to the table and take a seat please! ^endDiscuss(yes)
+
+                    u5:(~no *) Okay, if you want anything to drink at any point, you can ask Jen! Now follow me to the table and take a seat please! ^endDiscuss(yes)
+
+                u4:(~no *) No worries, the rules will be explained in detail at the table, before each game starts!
+
+            u3:(~no *) Well, life is full of surprises!
+            Now, I will give you a quick overview of how the experimental study is going to take place.
+            The study consists of you playing two games. In the first game, called honesty game, you will have to roll a dice.
+            In the second game, called investment game, you will have to invest a sum of money. The rules of both games will
+            be explained in detail at the table.
+
+            Is this clear?
+
+                u4:(~yes *) Great! Before we proceed, would you like anything to drink?
+
+                    u5:(~yes *) Very well, I will tell Jen to bring you some water. Now follow me to the table and take a seat please! ^endDiscuss(yes)
+
+                    u5:(~no *) Okay, if you want anything to drink at any point, you can ask Jen! Now follow me to the table and take a seat please! ^endDiscuss(yes)
+
+                u4:(~no *) No worries, the rules will be explained in detail at the table, before each game starts! Before we proceed, would you like anything to drink? We have water!
+
+                    u5:(~yes *) Very well, I will tell Jen to bring you some water. Now follow me to the table and take a seat please! ^endDiscuss(yes)
+
+                    u5:(~no *) Okay, if you want anything to drink at any point, you can ask Jen! Now follow me to the table and take a seat please! ^endDiscuss(yes)
+

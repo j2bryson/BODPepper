@@ -1,0 +1,20 @@
+topic: ~game_rules()
+# Defining extra concepts out of words or group of words
+#concept:(hello) [hello hi hey "good morning" greetings]
+
+# Replying to speech
+#u:(~hello) ~hello
+
+concept:(end)[done ok okay finished "I'm done" "I am done" "I have rolled"]
+concept: (y) [sure yes yup correct fine yep yeah "kind of" "probably" "I think so"]
+concept: (n) [no nah nope "not really" "not yet"]
+
+u:(~end)
+Okay. Did you submit your response?
+
+    u1:(~y)
+    Great. \pau=200\ The experimenter will come back in now.
+    $transition=true ^endDiscuss(yes)
+
+    u1:(~n)
+    Please submit your response.

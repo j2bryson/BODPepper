@@ -1,0 +1,9 @@
+topic: ~investment_rules()
+concept: (positive) ["i understand" sure yes yup correct fine yep yeah "kind of" "probably" "I think so"]
+concept: (negative) ["don't understand" no nah nope "not really"]
+
+u:(~positive)
+\vct=100\ Excellent \pau=500\let us start. $understood=true ^endDiscuss(yes)
+
+u:(~negative)
+\vct=100\ In that case \pau=500\maybe the experimenter \pau=500\can explain it a bit better? $understood=false ^endDiscuss(no)

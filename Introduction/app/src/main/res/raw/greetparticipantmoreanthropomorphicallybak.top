@@ -1,0 +1,123 @@
+topic: ~greet_participant()
+
+# @author Vasile Perciuleac, minor edits by J Haensel
+
+# Defining extra concepts out of words or group of words
+
+concept:(greetings) ^rand[hello hi hey "hey there"]
+concept:(intro_feeling) ^rand[nice]
+concept:(self) [I'm]
+concept:(good) ^rand[great well {very} good]
+concept:(yes) [sure yes yup correct fine yep yeah "kind of" "probably" "I think so"]
+concept:(no) [no nah nope "not really"]
+
+# Replying to speech
+u:(~greetings) ~greetings my name is Pepper! What is your name? 
+
+    u1:(*) ~intro_feeling to meet you! Is your day going well so far?
+
+        u2:(~yes) I'm glad to hear that! Am I what you were expecting?
+
+            u3:(~yes *) Good, I would hate to disappoint you!
+
+            Now, I'll give you a quick overview of today's session.
+            So, as the experimenter already explained, the study consists of games, and questionnaires.
+            First, you'll be asked to report the number of a dice roll, then you'll be asked to
+            decide how much money you'd like to pass over to me, and finally there will be some
+            questionnaires to fill out. \pau=200\ I'll remind you of the instructions when we get to each
+            part. Is that alright?
+
+                u4:(~yes *) Great! Before we start, would you like anything to drink? We have water!
+
+                    u5:(~yes *) Sure, the experimenter will get you some water. Let's go and sit at the table! ^endDiscuss(yes)
+
+                    u5:(~no *) Okay, if you'd like anything to drink at any point, just let the experimenter know!
+                    \pau=200\ Let's go and sit at the table! ^endDiscuss(yes)
+
+                u4:(~no *) Okay, no worries, we will explain the rules again in detail at the table,
+                           before each game starts! \pau=200\ Before we head over there, would you
+                           like anything to drink? We have water!
+
+                           u5:(~yes *) Sure, the experimenter will get you some water. Let's go and sit at the table! ^endDiscuss(yes)
+
+                           u5:(~no *) Okay, if you'd like anything to drink at any point, just let the experimenter know!
+                           \pau=200\ Let's go and sit at the table! ^endDiscuss(yes)
+
+            u3:(~no *) Well, life is full of surprises!
+
+            Now, I'll give you a quick overview of today's session.
+            So, as the experimenter already explained, the study consists of games, and questionnaires.
+            First, you'll be asked to report the number of a dice roll, then you'll be asked to
+            decide how much money you'd like to pass over to me, and finally there will be some
+            questionnaires to fill out. \pau=200\ I'll remind you of the instructions when we get to each
+            part. Is that alright?
+
+                u4:(~yes *) Great! Before we start, would you like anything to drink? We have water!
+
+                    u5:(~yes *) Sure, the experimenter will get you some water. \pau=200\
+                                Let's go and sit at the table! ^endDiscuss(yes)
+
+                    u5:(~no *) Okay, if you'd like anything to drink at any point, just let the experimenter know!
+                               \pau=200\ Let's go and sit at the table! ^endDiscuss(yes)
+
+                u4:(~no *) Okay, no worries, we  will explain the rules again in detail at the table,
+                           before each game starts! \pau=200\ Before we head over there, would you
+                           like anything to drink? We have water!
+
+                           u5:(~yes *) Sure, the experimenter will get you some water. Let's go and sit at the table! ^endDiscuss(yes)
+
+                           u5:(~no *) Okay, if you'd like anything to drink at any point, just let the experimenter know!
+                           \pau=200\ Let's go and sit at the table! ^endDiscuss(yes)
+
+        u2:(~no) I'm sorry to hear that! Am I what you were expecting?
+
+            u3:(~yes *) Good, I would hate to disappoint you!
+
+            Now, I'll give you a quick overview of today's session.
+            So, as the experimenter already explained, the study consists of games, and questionnaires.
+            First, you'll be asked to report the number of a dice roll, then you'll be asked to
+            decide how much money you'd like to pass over to me, and finally there will be some
+            questionnaires to fill out. \pau=200\ I'll remind you of the instructions when we get to each
+            part. Is that alright?
+
+                u4:(~yes *) Great! Before we start, would you like anything to drink? We have water!
+
+                    u5:(~yes *) Sure, the experimenter will get you some water. Let's go and sit at the table! ^endDiscuss(yes)
+
+                    u5:(~no *) Okay, if you'd like anything to drink at any point, just let the experimenter know!
+                    \pau=200\ Let's go and sit at the table! ^endDiscuss(yes)
+
+                u4:(~no *) Okay, no worries, we will explain the rules again in detail at the table,
+                           before each game starts! \pau=200\ Before we head over there, would you
+                           like anything to drink? We have water!
+
+                           u5:(~yes *) Sure, the experimenter will get you some water. Let's go and sit at the table! ^endDiscuss(yes)
+
+                           u5:(~no *) Okay, if you'd like anything to drink at any point, just let the experimenter know!
+                           \pau=200\ Let's go and sit at the table! ^endDiscuss(yes)
+
+            u3:(~no *) Well, life is full of surprises!
+
+            Now, I'll give you a quick overview of today's session.
+            So, as the experimenter already explained, the study consists of games, and questionnaires.
+            First, you'll be asked to report the number of a dice roll, then you'll be asked to
+            decide how much money you'd like to pass over to me, and finally there will be some
+            questionnaires to fill out. \pau=200\ I'll remind you of the instructions when we get to each
+            part. Is that alright?
+
+                u4:(~yes *) Great! Before we start, would you like anything to drink? We have water!
+
+                    u5:(~yes *) Sure, the experimenter will get you some water. \pau=200\
+                                Let's go and sit at the table! ^endDiscuss(yes)
+
+                    u5:(~no *) Okay, if you'd like anything to drink at any point, just let the experimenter know!
+                               \pau=200\ Let's go and sit at the table! ^endDiscuss(yes)
+
+                u4:(~no *) Okay, no worries, we  will explain the rules again in detail at the table,
+                           before each game starts! \pau=200\ Before we head over there, would you
+                           like anything to drink? We have water!
+
+                           u5:(~yes *) Sure, the experimenter will get you some water. Let's go and sit at the table! ^endDiscuss(yes)
+
+                           u5:(~no *) Okay, if you'd like anything to drink at any point, just let the experimenter know!
+                           \pau=200\ Let's go and sit at the table! ^endDiscuss(yes)

@@ -1,0 +1,39 @@
+topic: ~investment_listen()
+# Defining extra concepts out of words or group of words
+concept:(finished) [done ok okay finished over submitted "I'm done" "I am done"]
+concept: (positive) ["i have" sure yes yup correct fine yep yeah "kind of" "probably" "I think so"]
+concept: (negative) ["i haven't" no nah nope "not really"]
+concept:(pounds) [0 1 2 3 4 5]
+concept:(pence) [0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31
+    32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65
+    66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99]
+concept:(numberwords) [all nothing none everything]
+
+# Replying to speech
+u:(~finished) Okay. Did you submit your response?
+    u1:(~positive) Excellent! How much are you passing over?
+        u2:(_~pounds [pound pounds quid euro euros])
+        Great!^endDiscuss(yes)
+
+        u2:(_~pence [pence p cent cents])
+        Great!^endDiscuss(yes)
+
+        u2:(_~pounds {[pound pounds quid euro euros €]} {and} _~pence {[pence p cent cents]})
+        Great!^endDiscuss(yes)
+
+        u2:(_~numberwords)
+        Great!^endDiscuss(yes)
+
+    u1:(~negative) Please submit your response.
+        u2: (~finished) Excellent! How much are you passing over?
+            u3:(_~pounds [pound pounds quid euro euros])
+            Great!^endDiscuss(yes)
+
+            u3:(_~pence [pence p cent cents])
+            Great!^endDiscuss(yes)
+
+            u3:(_~pounds {[pound pounds quid euro euros €]} {and} _~pence {[pence p cent cents]})
+            Great!^endDiscuss(yes)
+
+            u3:(_~numberwords)
+            Great!^endDiscuss(yes)
